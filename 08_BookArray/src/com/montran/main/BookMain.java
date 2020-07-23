@@ -107,7 +107,6 @@ public class BookMain {
 			case 4:
 				System.out.println("Enter Book id for delete");
 				bookId = scanner.nextInt();
-				book = bookUtil.getBookById(bookId);
 				result = bookUtil.deleteBook(bookId);
 				if (result) {
 					System.out.println("Successfully deleted");
