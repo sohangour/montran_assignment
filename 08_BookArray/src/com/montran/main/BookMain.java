@@ -117,9 +117,9 @@ public class BookMain {
 			case 5:
 				System.out.println("Enter book id");
 				bookId = scanner.nextInt();
-
+               book= bookUtil.getBookById(bookId);
 				if (book != null) {
-					System.out.println(bookUtil.getBookById(bookId));
+					System.out.println(book);
 				} else {
 					System.out.println("No Book Found");
 				}
