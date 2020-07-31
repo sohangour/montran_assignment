@@ -1,3 +1,4 @@
+<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -8,7 +9,8 @@
 </head>
 <body>
 	<h3>Product</h3>
-	<%!String productName = "";%>
+	<%!String productName = "";
+	ArrayList<String> list = new ArrayList<>();%>
 
 	<form action="" method="post">
 		Product Name: <input type="text" name="productName"> <input
@@ -17,26 +19,20 @@
 	<hr>
 	<%
 		if (request.getParameter("productName") != null && !request.getParameter("productName").equals("")) {
-		System.out.println("inside top if ::" + request.getParameter("productName"));
-
-		if (productName.isEmpty()) {
-			productName = request.getParameter("productName");
-			application.setAttribute("productList", productName);
-		} else if (!application.getAttribute("productList").toString().contains(request.getParameter("productName"))) {
-			productName = application.getAttribute("productList") + "," + request.getParameter("productName");
+		if (!list.contains(request.getParameter("productName"))) {
+			list.add(request.getParameter("productName"));
+			productName = list.toString();
 			application.setAttribute("productList", productName);
 		}
-
 	}
 
 	if (application.getAttribute("productList") != null) {
 		productName = application.getAttribute("productList").toString();
-		System.out.print("inside if ::" + productName);
 	}
 	%>
-	suggestion :[<%
+	suggestion :<%
 		
 	%>
-	<%=productName%>]
+	<%=productName%>
 </body>
 </html>
